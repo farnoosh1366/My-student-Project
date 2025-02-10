@@ -1,0 +1,11 @@
+import sqlite3
+myconnect=sqlite3.connect("MarketHandy.db")
+myc =myconnect.cursor()
+myc.execute("""CREATE TABLE IF NOT EXISTS info(name TEXT,famili TEXT ,coodmeli INT,pricebuy INT);""")
+n =input("Enter name of customer:")
+f =input("Enter famili of customer:")
+c= int(input("Enter the coodmeli of customer:"))
+p =int(input("Enter the price Buy :"))
+myc.execute("""INSERT INTO info(name,famili,coodmeli,pricebuy)VALUES(?,?,?,?);""",(n,f,c,p))
+myconnect.commit()
+myconnect.close()
